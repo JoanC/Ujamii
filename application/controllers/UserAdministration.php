@@ -1,210 +1,15 @@
 <?php
-
-class Index  extends CI_Controller{
-    
- public $data;
  
- public function __construct() {
-     parent::__construct();
-     $this->load->helper('url');
-     $this->load->helper('form');
-
-// Load form validation library
-     $this->load->library('form_validation');
-
-// Load session library
-     $this->load->library('session');
-
-// Load database
-     $this->load->model('login_database');
-
-}
+class userAdministration extends CI_Controller {
  
-        
-   public function index(){
-       
-       $this->load->helper('url');
-       //$this->load->model("UserService");
-       $this->data['main']= 'home';
-       $this->load->view('temp',$this->data);
-   }
-   
-   public function about(){
-         $this->data['main']= 'about-us';
-         $this->load->view('temp',$this->data);
-   }
-   public function portfolio(){
-         $this->data['main']= 'portfolio';
-         $this->load->view('temp',$this->data);
-   }
-   
-   public function registerBusiness(){
-       $this->data['main'] = 'registerBusiness';
-       $this->load->view('temp',$this->data);
-   }
-       
-// Show login page
-public function user_login_show() {
-//$this->load->view('login_form');
- $this->data['main'] = 'login_form';
-       $this->load->view('temp',$this->data);
-}
-/*
-// Show registration page
-public function user_registration_show() {
-$this->load->view('registration_form');
-}
-
-// Validate and store registration data in database
-public function new_user_registration() {
-
-// Check validation for user input in SignUp form
-$this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
-$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-$this->form_validation->set_rules('email_value', 'Email', 'trim|required|xss_clean');
-$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-if ($this->form_validation->run() == FALSE) {
-$this->load->view('registration_form');
-} else {
-$data = array(
-'name' => $this->input->post('name'),
-'user_name' => $this->input->post('username'),
-'user_email' => $this->input->post('email_value'),
-'user_password' => $this->input->post('password')
-);
-$result = $this->login_database->registration_insert($data) ;
-if ($result == TRUE) {
-$data['message_display'] = 'Registration Successfully !';
-$this->load->view('login_form', $data);
-} else {
-$data['message_display'] = 'Username already exist!';
-$this->load->view('registration_form', $data);
-}
-}
-}
-*/
-// Check for user login process
-public function user_login_process() {
-
-$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-
-if ($this->form_validation->run() == FALSE) {
-//$this->load->view('login_form');
-     $this->data['main'] = 'login_form';
-       $this->load->view('temp',$this->data);
-} 
-else {
-$data = array(
-'username' => $this->input->post('username'),
-'password' => $this->input->post('password')
-);
-
-$result = $this->login_database->login($data);
-
-if($result == TRUE){
-    //var_dump($result);
-$sess_array = array(
-'username' => $this->input->post('username'),
- 'loginuser'=>TRUE
-);
-//var_dump($sess_array);
-//
-//// Add user data in session
-////$this->session->set_userdata('logged_in', $sess_array);
-//$user = $this->session->userdata('loginuser');
-//$username=$user["username"];
-//var_dump($user);
-$user=$sess_array["username"];
-//var_dump($user);
-$result = $this->login_database->read_user_information($user);
-//var_dump($result);
-                foreach ($result as $row)
-                {
-                    $firstname['first']=$row->firstName;
-                    $lastname=$row->lastName;
-                    $this->load->view('userheader');
-                    //var_dump($firstname);
-
-//$this->load->view($main);
-                    $this->load->view('admin_page',$firstname);
-                }
-
-    
-
-
-//$this->data['main'] = 'admin_page';
-
-//$this->load->view('usertemp');
-
-}
- else 
-     {
-    echo "Failed";
-     }
-//
-
-//if($result != false){
-//$data = array(
-//
-//'username' =>$result[0]->username,
-//'password' =>$result[0]->password,
-//'fName' =>$result[0]->firstName,
-//'lName' =>$result[0]->lastName,
-//'address' =>$result[0]->address,
-//'email' =>$result[0]->email,
-//'age' =>$result[0]->age,
-// 'telephone' =>$result[0]->telephone,
-//
-//);
-//var_dump(data);
-// $this->data['main'] = 'admin_page';
-// $this->load->view('usertemp',$this->data);
-////
-//}
-}
-//else{
-//$data = array(
-//'error_message' => 'Invalid Username or Password'
-//);
-////$this->load->view('login_form', $data);
-// $this->data['main'] = 'login_form';
-//       $this->load->view($data,'temp',$this->data);
-//}
-//}
-}
-public function logoutuser()
-{
-    $this->session->sess_destroy();
-}
-
-// Logout from admin page
-public function logout() {
-
-// Removing session data
-$sess_array = array(
-'username' => ''
-);
-$this->session->unset_userdata('logged_in', $sess_array);
-$data['message_display'] = 'Successfully Logout';
-//$this->load->view('login_form', $data);
- $this->data['main'] = 'login_form';
-       $this->load->view('temp',$this->data);
-}
-
-
-   
  
-   
-   
-   //public function user_login() {
-     //  $this->load->view('login');
-   //}
-
-   //public function user_registration_show() {
-     //  $this->load->view('sign-up');
-   //}
-  public function register(){
+    public function index()
+    {
+        echo 'welcome to userAdministration Controller';
+    }
+     
+     
+    public function register(){
      
         //echo "registering new user";
         $this->load->helper(array('form', 'url'));
@@ -223,18 +28,16 @@ $data['message_display'] = 'Successfully Logout';
  
  
         if ($this->form_validation->run() == FALSE){
-         $this->data['main']= 'userRegisterView';
-         $this->load->view('temp',$this->data);
-            //$this->load->view('userRegisterView');
-        
+         
+            $this->load->view('userRegisterView');
          
         }
         else
         {
              //loading the required model and service classes
-             $this->load->model("usermodel");
-             $this->load->model("userservice");
-             $this->load->model("emailclass");
+             $this->load->model("UserModel");
+             $this->load->model("UserService");
+             $this->load->model("EmailClass");
  
              
             $userModel=new UserModel();    
@@ -260,43 +63,26 @@ $data['message_display'] = 'Successfully Logout';
              
                 //echo "registration email should be sent";
          
-             // $emailClass=new EmailClass();
+              $emailClass=new EmailClass();
              
-             // $emailSentStatus=$emailClass->sendEmail("kiruijoan@gmail.com","kiruijoan@gmail.com","new user registration","jckirui@wordpress.com");
+              $emailSentStatus=$emailClass->sendEmail("chathuranga.t@gmail.com","chathuranga.t@gmail.com","new user registration","chathurangat.blogspot.com");
              
-           //  if($emailSentStatus){
+             if($emailSentStatus){
              
-             //redirect(site_url('login_form')); //with success message
-               // $this->load->view('login_form');
-                 $this->data['main'] = 'login_form';
-       $this->load->view('temp',$this->data);
+             redirect(base_url()); //with success message
              
-             //}
-            // else{
+             }
+             else{
              
-             //redirect(base_url()); //with error message
-             //}    
+             redirect(base_url()); //with error message
+             }    
              
-            }
-            else{
-                echo 'Username already exists!';
-                 //$this->load->view('userRegisterView');
-                 $this->data['main'] = 'userRegisterView';
-                 $this->load->view('temp',$this->data);
-            }
+            }//if
        
              
-             /*  $result = $this->$userService->createNewUser() ;
-            if ($result == TRUE) {
-                $data['message_display'] = 'Registration Successfully !';
-                $this->load->view('login_form');
-                   } 
-            else {
-                   $data['message_display'] = 'Username already exist!';
-            $this->load->view('userRegisterView');}*/
+            
      
-        }//else
-      
+        }//else            
     }//register    
      
      
@@ -304,8 +90,8 @@ $data['message_display'] = 'Successfully Logout';
      
      
     //echo "request for remeving user with  userID ".$userID;
-             $this->load->model("usermodel");
-             $this->load->model("userservice");
+             $this->load->model("UserModel");
+             $this->load->model("UserService");
              $this->load->helper("url");
  
             $userModel=new UserModel();    
@@ -328,8 +114,8 @@ $data['message_display'] = 'Successfully Logout';
      
              $this->load->helper(array('form', 'url'));
              $this->load->library('form_validation');        
-             $this->load->model("usermodel");
-             $this->load->model("userservice");
+             $this->load->model("UserModel");
+             $this->load->model("UserService");
              $this->load->helper("url");
  
             $userModel=new UserModel();    
@@ -373,8 +159,8 @@ $data['message_display'] = 'Successfully Logout';
         else
         {
              //loading the required model and service classes
-             $this->load->model("usermodel");
-             $this->load->model("userservice");
+             $this->load->model("UserModel");
+             $this->load->model("UserService");
  
              
             $userModel=new UserModel();    
@@ -417,8 +203,8 @@ $data['message_display'] = 'Successfully Logout';
      
     function ajaxValidation(){
      
-    $this->load->model("usermodel");
-    $this->load->model("userservice");
+    $this->load->model("UserModel");
+    $this->load->model("UserService");
  
       $userModel=new UserModel();    
       $userService=new UserService();
@@ -583,10 +369,5 @@ $data['message_display'] = 'Successfully Logout';
     }//ajaxValidation
      
 }//class
-
  
 ?>
-
-
-}
-

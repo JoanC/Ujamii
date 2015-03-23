@@ -76,8 +76,8 @@ class UserService extends CI_Model {
      
     function getAllRegisteredUsersIDs(){
          
-    $this->db->select('userID');
-    $query = $this->db->get('user');
+    $this->db->select('lendee_Id');
+    $query = $this->db->get('lendee_tbl');
     $selectedDataArray=array();
      
     $i=0;

@@ -31,13 +31,15 @@ echo $error_message;
 }
 echo validation_errors();
 echo "</div>";
-?>
-<label>UserName :</label>
+?>  <div class="col-md-3"></div>
+            <div class="col-md-6">
+                 <div class="well well-sm"><strong><span ></span>Login</strong></div>
+<label>UserName </label>
 <input type="text" name="username" id="name" placeholder="username"/>
-<label>Password :</label>
+<label>Password </label>
 <input type="password" name="password" id="password" placeholder="**********"/>
 <input type="submit" value=" Login " name="submit"/>
-<a href="<?php echo site_url('index/register');?>">To SignUp Click Here</a>
+<a href="<?php echo site_url('index/register');?>">To SignUp Click Here</a></div>
 <?php echo form_close(); ?>
 </div>
 </div>

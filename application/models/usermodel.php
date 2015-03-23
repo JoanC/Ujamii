@@ -1,7 +1,7 @@
 <?php
 class UserModel extends CI_Model {
  
-     var $userID='';
+     var $lendee_Id='';
      var $username = '';
      var $password = '';
      var $email = '';
@@ -20,12 +20,12 @@ class UserModel extends CI_Model {
      
     function setUserID($userIDprovided){
      
-        $this->userID=$userIDprovided;
+        $this->lendee_Id=$userIDprovided;
     }
      
     function getUserID(){
      
-    return $this->userID;
+    return $this->lendee_Id;
     }
      
     function getUserName(){

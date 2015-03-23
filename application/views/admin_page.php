@@ -15,7 +15,14 @@
 </head>
 <body>
  
-    
+    <?php 
+//    $username=$this->session->userdata('username');
+//    var_dump($username);
+//    if(!(isset($username) && $username)){
+//              redirect('index/user_login_process/', 'refresh');
+//        
+//    } 
+    ?>
     
 <div class="container">
 
@@ -38,10 +45,10 @@
                 <div class="col-sm-12">
                     <div class="col-xs-12 col-sm-8">
                         <h2 style="text-decoration:underline;"><?php
-                         echo "<b id='welcome'>" . $firstname . " </b>";
+                         echo "<b id='welcome'>"."Welcome " . $firstname . " </b>";
 
                             ?></h2>
-                        <p><strong>Type: </strong>first time </p>
+                        <p ><strong>Type: </strong>first time </p>
                         <p><strong>Business Name: </strong>Shoka shiki</p>
                         <p><strong>Business type: </strong>service </p>
                         <p class="text-center skills"><strong>weights</strong></p>
@@ -52,7 +59,7 @@
                     <div class="col-xs-12 col-sm-4 col-lg-1 text-center">                        
                         <figure>
                             <span class="fa fa-file-text-o" style="font-size:127px; padding-top: 20px;"></span>                                 
-                            <span style="font-size:47px; padding-top: 20px;">Avg.</span>                                 
+                            <span style="font-size:27px; padding-top: 20px;">Avg.</span>                                 
                             <span class="avg">6.2</span>           
                         </figure>
                     </div>
@@ -102,8 +109,8 @@ div.skill {
 }
 </style>-->
 
-<!-- you need to include the shieldui css and js assets in order for the charts to work -->
-<!--<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/shieldui-all.min.css" />
+<!-- you need to include the shieldui css and js assets in order for the charts to work 
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/shieldui-all.min.css" />
 <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
 <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>-->
 

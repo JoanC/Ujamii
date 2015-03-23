@@ -183,6 +183,7 @@ body > section {
 }
 
 .top-bar {
+    //margin-top: -25px;
   //padding: 10px 0;
   background: #191919;
  // border-bottom: 1px solid #222;

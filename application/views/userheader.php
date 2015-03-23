@@ -38,13 +38,13 @@
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="<?php echo site_url('index');?>">Home</a></li>
-                        <li><a href="<?php echo site_url('index/about');?>">About </a></li>
+                        <li><a href="<?php echo site_url('index');?>">My rating </a></li>
                 
-                        <li><a href="<?php echo site_url('index/registerBusiness');?>">My business</a></li>
+                        <li><a href="<?php echo site_url('lendeeProfile/registerBusiness');?>">My business</a></li>
                        
              
-                        <li><a href="<?php echo site_url('index/logout');?>">Logout</a></li> 
-                         <li><a href="<?php echo site_url('index/register');?>">Apply loan</a></li> 
+                         <li><a href="<?php echo site_url('lendeeProfile/loanApplication');?>">Apply loan</a></li> 
+                         <li><a href="<?php echo site_url('index/logoutuser');?>">Logout</a></li>
                                             
                     </ul>
                 </div>
@@ -56,3 +56,12 @@
 
 
 
+<script src="<?php echo base_url();?>js/jquery.js"></script>
+    <script type="text/javascript">
+        $('.carousel').carousel()
+    </script>
+    <script src="<?php echo base_url();?>js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.prettyPhoto.js"></script>
+    <script src="<?php echo base_url();?>js/jquery.isotope.min.js"></script>
+    <script src="<?php echo base_url();?>js/main.js"></script>
+    <script src="<?php echo base_url();?>js/wow.min.js"></script>

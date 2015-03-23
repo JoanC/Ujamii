@@ -1,6 +1,8 @@
 
 <html >
-<head><link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+<head>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+<!--        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>-->
    <!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>-->
 <style type="text/css">
  
@@ -57,7 +59,7 @@ xmlhttp.onreadystatechange=function()
     }
   }
  
-sendAjaxHttpRequest(xmlhttp,"http://localhost/mvc/index.php/index/ajaxValidation",elementName,elementValue,SpanTagId);
+sendAjaxHttpRequest(xmlhttp,"http://localhost/Ujamii/index.php/ajaxValidation",elementName,elementValue,SpanTagId);
  
 }//validateUsername
  
@@ -95,6 +97,7 @@ xmlhttp.send(parameters);
  
  
 }
+
  
 </script>
 
@@ -111,8 +114,13 @@ $this->form_validation->set_error_delimiters('<div class="error_color">', '</div
  
 echo form_open(base_url().'index/register',array('method'=>'post','class'=>'registration_form_div'));
 ?>
+    
     <div class ="container" >
         <div id ="login">
+            <form role ="form">
+                <div class="col-md-5"></div>
+            <div class="col-md-6">
+                 <div class="well well-sm"><strong><span ></span>Sign up</strong></div>
 <table>
   <tr>
     <td><label>Username </label>
@@ -133,18 +141,7 @@ echo form_open(base_url().'index/register',array('method'=>'post','class'=>'regi
     </td>
     <td><p><span id="txtLastName"> <?php echo form_error('lastName'); ?> </span></p></td>
   </tr>
-  <tr>
-    <td><label>Password </label></td>
-    <td><input id="password" type="password" name="password" value="<?php echo set_value('password'); ?>" />
-    </td>
-    <td><p><span id="txtPassword"><?php echo form_error('password'); ?></span></p></td>
-  </tr>
-  <tr>
-    <td><label>password confirmation </label></td>
-    <td><input type="password" id="passwordConfirmation" name="passwordConfirmation" value="<?php echo set_value('passwordConfirmation'); ?>" onchange="passwordValidation(this.value)"/>
-    </td>
-    <td><p><span id="txtPasswordConf"><?php echo form_error('passwordConfirmation'); ?></span></p></td>
-  </tr>
+ 
   <tr>
     <td><label>Age </label></td>
     <td><input type="text" name="age" value="<?php echo set_value('age'); ?>" onchange="validateForm('age',this.value,'txtAge')"/>
@@ -169,11 +166,26 @@ echo form_open(base_url().'index/register',array('method'=>'post','class'=>'regi
     </td>
     <td><p><span id="txtTelephone"><?php echo form_error('telephone'); ?> </span></p></td>
   </tr>
+   <tr>
+    <td><label>Password </label></td>
+    <td><input id="password" type="password" name="password" value="<?php echo set_value('password'); ?>" />
+    </td>
+    <td><p><span id="txtPassword"><?php echo form_error('password'); ?></span></p></td>
+  </tr>
+  <tr>
+    <td><label>password confirmation </label></td>
+    <td><input type="password" id="passwordConfirmation" name="passwordConfirmation" value="<?php echo set_value('passwordConfirmation'); ?>" onchange="passwordValidation(this.value)"/>
+    </td>
+    <td><p><span id="txtPasswordConf"><?php echo form_error('passwordConfirmation'); ?></span></p></td>
+  </tr>
 </table>
    
-<input type="submit" value="Register" name="registerUser"  />
- </div>
+<input type="submit" value="Submit" name="registerUser"  />
+            </div>
+ </form>
+        </div>
 </div>
+    
     <?php
 echo  form_close(); 
 ?>

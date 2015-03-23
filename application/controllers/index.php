@@ -44,16 +44,9 @@ class Index  extends CI_Controller{
    }
        
 // Show login page
-public function user_login_show() {
-//$this->load->view('login_form');
- $this->data['main'] = 'login_form';
-       $this->load->view('temp',$this->data);
-}
+
 /*
-// Show registration page
-public function user_registration_show() {
-$this->load->view('registration_form');
-}
+
 
 // Validate and store registration data in database
 public function new_user_registration() {
@@ -101,17 +94,23 @@ $data = array(
 );
 
 $result = $this->login_database->login($data);
+//redirect();
+//$this->lendeeProfile->registerBusiness($data['username']);
+//$results= $this->login_database->getUserID($data);
+//var_dump($results);
 
-if($result == TRUE){
+//if($result == TRUE){
+    if($result){
     //var_dump($result);
 $sess_array = array(
 'username' => $this->input->post('username'),
+ 'id'=>$result->lendee_Id,
  'loginuser'=>TRUE
 );
 //var_dump($sess_array);
 //
 //// Add user data in session
-////$this->session->set_userdata('logged_in', $sess_array);
+$this->session->set_userdata($sess_array);
 //$user = $this->session->userdata('loginuser');
 //$username=$user["username"];
 //var_dump($user);
@@ -127,7 +126,14 @@ $result = $this->login_database->read_user_information($user);
                     //var_dump($firstname);
 
 //$this->load->view($main);
+                    if($this->session->userdata('username')){
                     $this->load->view('admin_page',$firstname);
+                    }
+                    else{
+                        $this->data['main'] = 'login_form';
+                        $this->load->view('temp',$this->data);
+                        
+                    }
                 }
 
     
@@ -140,7 +146,16 @@ $result = $this->login_database->read_user_information($user);
 }
  else 
      {
-    echo "Failed";
+//     $data = array(
+//    ' error_message' => 'Invalid Username or Password'
+//          );
+     $data['error_message']= 'Invalid Username or password';
+
+        
+                $this->load->view('header');
+                //echo 'Invalid username or Password';
+                $this->load->view( 'login_form',$data);
+                 $this->load->view('footer');
      }
 //
 
@@ -173,23 +188,30 @@ $result = $this->login_database->read_user_information($user);
 //}
 //}
 }
-public function logoutuser()
-{
-    $this->session->sess_destroy();
-}
 
-// Logout from admin page
-public function logout() {
 
-// Removing session data
-$sess_array = array(
-'username' => ''
-);
-$this->session->unset_userdata('logged_in', $sess_array);
-$data['message_display'] = 'Successfully Logout';
-//$this->load->view('login_form', $data);
- $this->data['main'] = 'login_form';
-       $this->load->view('temp',$this->data);
+//logout
+public function logoutuser() {
+     if ($this->session->userdata('loginuser')) {
+     $this->session->sess_destroy();
+     $this->data['main'] = 'home';
+      $this->load->view('temp',$this->data);
+     }
+
+//// Removing session data
+//$sess_array = array(
+//'username' => False,
+//    'loginuser'=>False
+//   
+//);
+////$this->session->unset_userdata('loginuser', $sess_array);
+//$this->session->unset_userdata($sess_array);
+//$data['message_display'] = 'Successfully Logout';
+////$this->load->view('login_form', $data);
+//
+//$this->session->sess_destroy();
+// $this->data['main'] = 'home';
+//       $this->load->view('temp',$this->data);
 }
 
 
@@ -268,8 +290,11 @@ $data['message_display'] = 'Successfully Logout';
              
              //redirect(site_url('login_form')); //with success message
                // $this->load->view('login_form');
-                 $this->data['main'] = 'login_form';
-       $this->load->view('temp',$this->data);
+                    $data['message_display']= 'Successfully signed up!';
+                       $this->load->view('header');
+                        $this->load->view('login_form',$data);
+                         $this->load->view('footer');
+         
              
              //}
             // else{
@@ -588,5 +613,5 @@ $data['message_display'] = 'Successfully Logout';
 ?>
 
 
-}
+
 

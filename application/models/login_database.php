@@ -8,7 +8,7 @@ public function registration_insert($data) {
 // Query to check whether username already exist or not
 $condition = "user_name =" . "'" . $data['user_name'] . "'";
 $this->db->select('*');
-$this->db->from('user');
+$this->db->from('lendee_tbl');
 $this->db->where($condition);
 $this->db->limit(1);
 $query = $this->db->get();
@@ -32,13 +32,14 @@ public function login($data) {
 
 $condition = "username =" . "'" . $data['username'] . "' AND " . "password =" . "'" . $data['password'] . "'";
 $this->db->select('*');
-$this->db->from('user');
+$this->db->from('lendee_tbl');
 $this->db->where($condition);
 $this->db->limit(1);
 $query = $this->db->get();
 
 if ($query->num_rows() == 1) {
-return true;
+    return $query->row();
+//return true;
 } else {
 return false;
 }
@@ -49,7 +50,7 @@ public function read_user_information($user) {
 
 $condition = "username =" . "'" . $user. "'";
 $this->db->select('*');
-$this->db->from('user');
+$this->db->from('lendee_tbl');
 $this->db->where($condition);
 $this->db->limit(1);
 $query = $this->db->get();
@@ -59,6 +60,21 @@ return $query->result();
 } else {
 return false;
 }
+}
+public function getUserID($data){
+    
+$condition = "username =" . "'" . $data["username"]. "'";
+$this->db->select('lendee_Id');
+$this->db->from('lendee_tbl');
+$this->db->where($condition);
+$this->db->limit(1);
+$query = $this->db->get();
+
+if ($query->num_rows() == 1) {
+return $query->result();
+} else {
+return false;
+}  
 }
 
 }

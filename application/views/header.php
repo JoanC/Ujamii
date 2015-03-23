@@ -65,11 +65,14 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="<?php echo site_url('index');?>">Home</a></li>
                         <li><a href="<?php echo site_url('index/about');?>">About </a></li>
+                     
                 
                         <li><a href="<?php echo site_url('index/portfolio');?>">Portfolios</a></li>
-                        
+                           <?php if($this->session->userdata('username')):?>
+                         <li><a href="<?php echo site_url('index/logoutuser');?>">Logout</a></li> 
+                        <?php else:?><li><a href="<?php echo site_url('index/user_login_process');?>">Login</a></li> <?php endif;?>
              
-                        <li><a href="<?php echo site_url('index/user_login_process');?>">Login</a></li> 
+                        
                          <li><a href="<?php echo site_url('index/register');?>">Signup</a></li> 
                                             
                     </ul>

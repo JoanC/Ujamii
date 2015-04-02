@@ -20,8 +20,8 @@ echo $message_display;
 echo "</div>";
 }
 ?>
-<div id="main" class="container">
-<div id="login">
+<div  class="container">
+<div class="row">
 <!--<h2>Login Form</h2>-->
 <?php echo form_open('index/user_login_process'); ?>
 <?php
@@ -34,10 +34,22 @@ echo "</div>";
 ?>  <div class="col-md-3"></div>
             <div class="col-md-6">
                  <div class="well well-sm"><strong><span ></span>Login</strong></div>
-<label>UserName </label>
-<input type="text" name="username" id="name" placeholder="username"/>
-<label>Password </label>
-<input type="password" name="password" id="password" placeholder="**********"/>
+                 <table>
+                 <div class="form-group">
+                    <label >UserName</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="username" id="InputName" required>
+                           <span class="input-group-addon"><span ></span></span>
+                    </div>
+                </div>
+<div class="form-group">
+                    <label >Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" name="password" id="InputName" placeholder="**********" required>
+                           <span class="input-group-addon"><span ></span></span>
+                    </div>
+                </div>
+                 </table>
 <input type="submit" value=" Login " name="submit"/>
 <a href="<?php echo site_url('index/register');?>">To SignUp Click Here</a></div>
 <?php echo form_close(); ?>

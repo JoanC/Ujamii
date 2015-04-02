@@ -1,0 +1,10 @@
+{
+   
+
+    
+    "require": {
+        "fzaninotto/faker": "1.3.*@dev"
+    }
+    
+    
+}

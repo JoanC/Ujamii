@@ -1,59 +1,68 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 <!--<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>-->
 <div class="container">
-    <div id="login">
+    <div class="row">
+    
         <form role="form" action="<?php echo site_url('lendeeProfile/registerBusiness'); ?>" method="post">
-            <div class="col-md-5"></div>
+            <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="well well-sm"><strong><span ></span>Business Registration</strong></div>
                 <table>
-                    <tr>
-    <td><label>Business Name </label>
-    </td>
-    <td><input name ="businessName" type="text" />
-    </td>
-    <td><p></p></td>
-  </tr>
-        <tr>
-    <td><label>Location </label>
-    </td>
-    <td><input name ="businessLocation" type="text" />
-    </td>
-    <td><p></p></td>
-  </tr>
-        <tr>
-    <td><label>Category </label>
-    </td>
-    <td> <select name="businessCategory" >
-    <option value="volvo">Creative</option>
-    <option value="saab">Service</option>
-    <option value="mercedes">Jua Kali</option>
+                    
+     <div class="form-group">
+                    <label >Business Name</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="businessName" id="InputName" required>
+                           <span class="input-group-addon"><span ></span></span>
+                    </div>
+                </div>
+        <div class="form-group">
+                    <label >Business Location</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="businessLocation" id="InputName"  required>
+                          <span class="input-group-addon"><span ></span></span>
+                    </div>
+                </div>            
+       <div class="form-group">
+                    <label >Category</label>
+                    <div class="input-group">
+                        <select  class="form-control" name="businessCategory" id="InputName" >
+                            <option value="creative">Creative</option>
+                            <option value="service">Service</option>
+                            <option value="juaKali">Jua Kali</option>
     
-  </select>
-    </td>
-    <td><p></p></td>
-  </tr>
-        <tr>
-    <td><label> Description </label>
-    </td>
-    <td><textarea name="businessDescription" rows="5" cols="40"></textarea>
-    </td>
-    <td><p></p></td>
-  </tr>
-        <tr>
-    <td><label>Asset-worth </label>
-    </td>
-    <td><input name ="assetWorth" type="text" />
-    </td>
-    <td><p></p></td>
-  </tr>
-        <tr>
-    <td><label> Current Income (per month)</label>
-    </td>
-    <td><input name ="currentIncome" type="text" />
-    </td>
-    <td><p></p></td>
-  </tr>
+                        </select>
+                        
+                        <span class="input-group-addon"><span ></span></span>
+                    </div>
+                </div>
+       
+        
+            <div class="form-group">
+                    <label >Business Description</label>
+                    <div class="input-group">
+                        <textarea type="text" rows="4" cols="40" class="form-control" name="businessDescription" id="InputName"  required></textarea>
+                        
+                        <span class="input-group-addon"><span ></span></span>
+                    </div>
+                </div>
+    
+        
+             <div class="form-group">
+                     <label>Assets-worth</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="assetWorth" id="InputName"  required>
+                           <span class="input-group-addon"><span ></span></span>
+                    </div>
+                </div>
+     <div class="form-group">
+                    <label >Income (Per month)</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="currentIncome" id="InputName"  required>
+                           <span class="input-group-addon"><span ></span></span>
+                    </div>
+                </div>
+       
 <!--             <div style ="display:inline;">
                     <label >Business Name</label>
                     <div style ="display:inline;">
@@ -102,4 +111,5 @@
         </form>
         
     </div>
+
 </div>

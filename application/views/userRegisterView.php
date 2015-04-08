@@ -114,70 +114,117 @@ $this->form_validation->set_error_delimiters('<div class="error_color">', '</div
  
 echo form_open(base_url().'index/register',array('method'=>'post','class'=>'registration_form_div'));
 ?>
-    
+   <?php
+if (isset($message_display)) {
+echo "<div class='message'>";
+echo $message_display;
+echo "</div>";
+}
+?> 
+    <?php
+echo "<div class='error_msg'>";
+if (isset($error_message)) {
+echo $error_message;
+}
+echo validation_errors();
+echo "</div>";
+?>
     <div class ="container" >
-        <div id ="login">
+        <div id ="row">
             <form role ="form">
-                <div class="col-md-5"></div>
+                <div class="col-md-3"></div>
             <div class="col-md-6">
                  <div class="well well-sm"><strong><span ></span>Sign up</strong></div>
 <table>
-  <tr>
-    <td><label>Username </label>
-    </td>
-    <td><input type="text"  id="username" name="username" value="<?php echo set_value('username'); ?>" onchange="validateForm('username',this.value,'txtUsername')" />
-    </td>
-    <td><p><span id="txtUsername"> <?php echo form_error('username'); ?> </span></p></td>
-  </tr>
-  <tr>
-    <td><label>First Name </label></td>
-    <td><input type="text" id="firstName" name="firstName" value="<?php echo set_value('firstName'); ?>" onchange="validateForm('firstName',this.value,'txtFirstName')"/>
-    </td>
-    <td><p><span id="txtFirstName"> <?php echo form_error('firstName'); ?></span></p></td>
-  </tr>
-  <tr>
-    <td><label>Last Name </label></td>
-    <td><input type="text"  id="lastName" name="lastName" value="<?php echo set_value('lastName'); ?>" onchange="validateForm('lastName',this.value,'txtLastName')"/>
-    </td>
-    <td><p><span id="txtLastName"> <?php echo form_error('lastName'); ?> </span></p></td>
-  </tr>
+             
+      
+     <div class="form-group">
+                    <label >Username</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="username" id="InputName"  value="<?php echo set_value('username'); ?>" onchange="validateForm('username',this.value,'txtUsername')" required/>
+                          <span class="input-group-addon"><span ></span></span>
+                    </div>
+                </div>  
+ <div class="form-group">
  
-  <tr>
-    <td><label>Age </label></td>
-    <td><input type="text" name="age" value="<?php echo set_value('age'); ?>" onchange="validateForm('age',this.value,'txtAge')"/>
-    </td>
-    <td><p><span id="txtAge"> <?php echo form_error('age'); ?> </span></p></td>
-  </tr>
-  <tr>
-    <td><label>Address </label></td>
-    <td><input type="text" name="address" value="<?php echo set_value('address'); ?>" onchange="validateForm('address',this.value,'txtAddress')"/>
-    </td>
-    <td><p><span id="txtAddress"><?php echo form_error('address'); ?></span></p></td>
-  </tr>
-  <tr>
-    <td><label>Email </label></td>
-    <td><input type="text" name="email" value="<?php echo set_value('email'); ?>" onchange="validateForm('email',this.value,'txtEmail')"/>
-    </td>
-    <td><p><span id="txtEmail"><?php echo form_error('email'); ?></span></p></td>
-  </tr>
-  <tr>
-    <td><label>Telephone </label></td>
-    <td><input type="text" name="telephone" value="<?php echo set_value('telephone'); ?>" onchange="validateForm('telephone',this.value,'txtTelephone')" />
-    </td>
-    <td><p><span id="txtTelephone"><?php echo form_error('telephone'); ?> </span></p></td>
-  </tr>
-   <tr>
-    <td><label>Password </label></td>
-    <td><input id="password" type="password" name="password" value="<?php echo set_value('password'); ?>" />
-    </td>
-    <td><p><span id="txtPassword"><?php echo form_error('password'); ?></span></p></td>
-  </tr>
-  <tr>
-    <td><label>password confirmation </label></td>
-    <td><input type="password" id="passwordConfirmation" name="passwordConfirmation" value="<?php echo set_value('passwordConfirmation'); ?>" onchange="passwordValidation(this.value)"/>
-    </td>
-    <td><p><span id="txtPasswordConf"><?php echo form_error('passwordConfirmation'); ?></span></p></td>
-  </tr>
+     <label>First Name </label>
+     <div class="input-group">
+    <input type="text" id="firstName" name="firstName" value="<?php echo set_value('firstName'); ?>" onchange="validateForm('firstName',this.value,'txtFirstName')"/>
+    <span class="input-group-addon"><span ></span></span>
+     </div>
+   
+  
+ </div>
+    
+  <div class="form-group">
+  
+    <label>Last Name </label>
+    <div class="input-group">
+    <input type="text"  id="lastName" name="lastName" value="<?php echo set_value('lastName'); ?>" onchange="validateForm('lastName',this.value,'txtLastName')"/>
+    <span class="input-group-addon"><span ></span></span>
+    </div>
+  
+  </div>
+    
+     <div class="form-group">
+  
+    <label>Age </label>
+    <div class="input-group">
+    <input type="text" name="age" value="<?php echo set_value('age'); ?>" onchange="validateForm('age',this.value,'txtAge')"/>
+    <span class="input-group-addon"><span ></span></span>
+    </div>
+  
+  </div> 
+    
+    <div class ="form-group">
+  
+    <label>Address </label>
+    <div class ="input-group">
+    <input type="text" name="address" value="<?php echo set_value('address'); ?>" onchange="validateForm('address',this.value,'txtAddress')"/>
+      <span class="input-group-addon"><span ></span></span>
+    </div>
+    
+  
+    </div>
+    <div class ="form-group">
+  
+    <label>Email </label>
+    <div class ="input-group">
+    <input type="text" name="email" value="<?php echo set_value('email'); ?>" onchange="validateForm('email',this.value,'txtEmail')"/>
+      <span class="input-group-addon"><span ></span></span>
+    </div>
+   
+  
+    </div>
+    <div class ="form-group">
+  
+    <label>Telephone </label>
+    <div class ="input-group">
+    <input type="text" name="telephone" value="<?php echo set_value('telephone'); ?>" onchange="validateForm('telephone',this.value,'txtTelephone')" />
+      <span class="input-group-addon"><span ></span></span>
+    </div>
+   
+  
+    </div>
+    <div class ="form-group">
+   
+    <label>Password </label>
+    <div class ="input-group">
+    <input id="password" type="password" name="password" value="<?php echo set_value('password'); ?>" />
+      <span class="input-group-addon"><span ></span></span>
+    </div>
+    
+  
+    </div>
+    <div class="form-group">
+    
+    <label>password confirmation </label>
+     <div class="input-group">
+    <input type="password" id="passwordConfirmation" name="passwordConfirmation" value="<?php echo set_value('passwordConfirmation'); ?>" onchange="passwordValidation(this.value)"/>
+      <span class="input-group-addon"><span ></span></span>
+     </div>
+ 
+    </div>
 </table>
    
 <input type="submit" value="Submit" name="registerUser"  />

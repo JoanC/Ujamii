@@ -113,8 +113,9 @@ class UserModel extends CI_Model {
      
  
     function getPassword(){
+      
      
-    return $this->password;
+    return md5($this->password);
     }
      
     function setPassword($passwordProvided){

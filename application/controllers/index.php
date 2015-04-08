@@ -18,6 +18,9 @@ class Index  extends CI_Controller{
 // Load database
      $this->load->model('login_database');
 
+
+     
+
 }
  
         
@@ -28,8 +31,12 @@ class Index  extends CI_Controller{
        $this->data['main']= 'home';
        $this->load->view('temp',$this->data);
    }
-   
+   public function faker(){
+     $this->load->view('faker');
+
+   }
    public function about(){
+        
          $this->data['main']= 'about-us';
          $this->load->view('temp',$this->data);
    }
@@ -37,196 +44,9 @@ class Index  extends CI_Controller{
          $this->data['main']= 'portfolio';
          $this->load->view('temp',$this->data);
    }
-   
-   public function registerBusiness(){
-       $this->data['main'] = 'registerBusiness';
-       $this->load->view('temp',$this->data);
-   }
+  
        
-// Show login page
-
-/*
-
-
-// Validate and store registration data in database
-public function new_user_registration() {
-
-// Check validation for user input in SignUp form
-$this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
-$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-$this->form_validation->set_rules('email_value', 'Email', 'trim|required|xss_clean');
-$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-if ($this->form_validation->run() == FALSE) {
-$this->load->view('registration_form');
-} else {
-$data = array(
-'name' => $this->input->post('name'),
-'user_name' => $this->input->post('username'),
-'user_email' => $this->input->post('email_value'),
-'user_password' => $this->input->post('password')
-);
-$result = $this->login_database->registration_insert($data) ;
-if ($result == TRUE) {
-$data['message_display'] = 'Registration Successfully !';
-$this->load->view('login_form', $data);
-} else {
-$data['message_display'] = 'Username already exist!';
-$this->load->view('registration_form', $data);
-}
-}
-}
-*/
-// Check for user login process
-public function user_login_process() {
-
-$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-
-if ($this->form_validation->run() == FALSE) {
-//$this->load->view('login_form');
-     $this->data['main'] = 'login_form';
-       $this->load->view('temp',$this->data);
-} 
-else {
-$data = array(
-'username' => $this->input->post('username'),
-'password' => $this->input->post('password')
-);
-
-$result = $this->login_database->login($data);
-//redirect();
-//$this->lendeeProfile->registerBusiness($data['username']);
-//$results= $this->login_database->getUserID($data);
-//var_dump($results);
-
-//if($result == TRUE){
-    if($result){
-    //var_dump($result);
-$sess_array = array(
-'username' => $this->input->post('username'),
- 'id'=>$result->lendee_Id,
- 'loginuser'=>TRUE
-);
-//var_dump($sess_array);
-//
-//// Add user data in session
-$this->session->set_userdata($sess_array);
-//$user = $this->session->userdata('loginuser');
-//$username=$user["username"];
-//var_dump($user);
-$user=$sess_array["username"];
-//var_dump($user);
-$result = $this->login_database->read_user_information($user);
-//var_dump($result);
-                foreach ($result as $row)
-                {
-                    $firstname['first']=$row->firstName;
-                    $lastname=$row->lastName;
-                    $this->load->view('userheader');
-                    //var_dump($firstname);
-
-//$this->load->view($main);
-                    if($this->session->userdata('username')){
-                    $this->load->view('admin_page',$firstname);
-                    }
-                    else{
-                        $this->data['main'] = 'login_form';
-                        $this->load->view('temp',$this->data);
-                        
-                    }
-                }
-
-    
-
-
-//$this->data['main'] = 'admin_page';
-
-//$this->load->view('usertemp');
-
-}
- else 
-     {
-//     $data = array(
-//    ' error_message' => 'Invalid Username or Password'
-//          );
-     $data['error_message']= 'Invalid Username or password';
-
-        
-                $this->load->view('header');
-                //echo 'Invalid username or Password';
-                $this->load->view( 'login_form',$data);
-                 $this->load->view('footer');
-     }
-//
-
-//if($result != false){
-//$data = array(
-//
-//'username' =>$result[0]->username,
-//'password' =>$result[0]->password,
-//'fName' =>$result[0]->firstName,
-//'lName' =>$result[0]->lastName,
-//'address' =>$result[0]->address,
-//'email' =>$result[0]->email,
-//'age' =>$result[0]->age,
-// 'telephone' =>$result[0]->telephone,
-//
-//);
-//var_dump(data);
-// $this->data['main'] = 'admin_page';
-// $this->load->view('usertemp',$this->data);
-////
-//}
-}
-//else{
-//$data = array(
-//'error_message' => 'Invalid Username or Password'
-//);
-////$this->load->view('login_form', $data);
-// $this->data['main'] = 'login_form';
-//       $this->load->view($data,'temp',$this->data);
-//}
-//}
-}
-
-
-//logout
-public function logoutuser() {
-     if ($this->session->userdata('loginuser')) {
-     $this->session->sess_destroy();
-     $this->data['main'] = 'home';
-      $this->load->view('temp',$this->data);
-     }
-
-//// Removing session data
-//$sess_array = array(
-//'username' => False,
-//    'loginuser'=>False
-//   
-//);
-////$this->session->unset_userdata('loginuser', $sess_array);
-//$this->session->unset_userdata($sess_array);
-//$data['message_display'] = 'Successfully Logout';
-////$this->load->view('login_form', $data);
-//
-//$this->session->sess_destroy();
-// $this->data['main'] = 'home';
-//       $this->load->view('temp',$this->data);
-}
-
-
-   
- 
-   
-   
-   //public function user_login() {
-     //  $this->load->view('login');
-   //}
-
-   //public function user_registration_show() {
-     //  $this->load->view('sign-up');
-   //}
-  public function register(){
+    public function register(){
      
         //echo "registering new user";
         $this->load->helper(array('form', 'url'));
@@ -280,20 +100,10 @@ public function logoutuser() {
              
             if($dbInserted){
              
-                //echo "registration email should be sent";
-         
-             // $emailClass=new EmailClass();
-             
-             // $emailSentStatus=$emailClass->sendEmail("kiruijoan@gmail.com","kiruijoan@gmail.com","new user registration","jckirui@wordpress.com");
-             
-           //  if($emailSentStatus){
-             
-             //redirect(site_url('login_form')); //with success message
-               // $this->load->view('login_form');
-                    $data['message_display']= 'Successfully signed up!';
-                       $this->load->view('header');
-                        $this->load->view('login_form',$data);
-                         $this->load->view('footer');
+                $data['message_display']= 'Successfully signed up!';
+                $this->load->view('header');
+                $this->load->view('login_form',$data);
+                $this->load->view('footer');
          
              
              //}
@@ -304,25 +114,130 @@ public function logoutuser() {
              
             }
             else{
-                echo 'Username already exists!';
+                $data['error_message'] = 'Username already exists!';
                  //$this->load->view('userRegisterView');
-                 $this->data['main'] = 'userRegisterView';
-                 $this->load->view('temp',$this->data);
+                 
+                 $this->load->view('header'); 
+           
+                 $this->load->view('userRegisterView',$data);
+                 $this->load->view('footer');
             }
        
              
-             /*  $result = $this->$userService->createNewUser() ;
-            if ($result == TRUE) {
-                $data['message_display'] = 'Registration Successfully !';
-                $this->load->view('login_form');
-                   } 
-            else {
-                   $data['message_display'] = 'Username already exist!';
-            $this->load->view('userRegisterView');}*/
+         
      
         }//else
       
     }//register    
+// Check for user login process
+    public function user_login_process() {
+
+    $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
+    $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+
+    if ($this->form_validation->run() == FALSE) {
+    //$this->load->view('login_form');
+         $this->data['main'] = 'login_form';
+           $this->load->view('temp',$this->data);
+    } 
+    else {
+    $data = array(
+    'username' => $this->input->post('username'),
+    'password' => $this->input->post('password')
+    );
+
+    $result = $this->login_database->login($data);
+    
+        if($result){
+      
+            $sess_array = array(
+              'username' => $this->input->post('username'),
+              'firstName'=>$result->firstName,
+              'id'=>$result->lendee_Id,
+              'loginuser'=>TRUE
+            );
+   
+                        $this->session->set_userdata($sess_array);
+                        $user=$sess_array["username"];
+                        $result = $this->login_database->read_user_information($user);
+   
+                    foreach ($result as $row)
+                    {
+                        $firstname['first']=$row->firstName;
+                        $lastname=$row->lastName;
+                        $username=$row->username;
+                
+                   
+                        if($this->session->userdata('username')&&($username=='Admin')){
+                            redirect('admin/suAdmin');
+                        //$this->load->view('admin/superadmin');
+
+                        }
+                        else{
+                            redirect('index/userprofile');
+//                          
+
+                        }
+                    }
+
+
+    }
+     else 
+         {
+   
+             $data['error_message']= 'Invalid Username or password';
+             $this->load->view('header');
+             //echo 'Invalid username or Password';
+                $this->load->view( 'login_form',$data);
+                $this->load->view('footer');
+         }
+    
+    }
+  
+    }
+
+    public function userprofile(){
+            $user= $this->session->userdata('username');
+             $result = $this->login_database->read_user_information($user);
+               foreach ($result as $row)
+                    {
+                        $firstname['first']=$row->firstName;
+                        $lastname=$row->lastName;
+                        $username=$row->username;
+                        
+         
+                    }
+               
+               
+               
+            $this->load->view('userheader');
+            $this->data['main'] = 'login_form';
+            $this->load->view('admin_page',$firstname);
+         
+          
+        
+    }
+//logout
+    public function logoutuser() {
+         if ($this->session->userdata('loginuser')) {
+         $this->session->sess_destroy();
+         $this->data['main'] = 'home';
+         $this->load->view('temp',$this->data);
+         }
+   
+
+      }
+
+      public function showBusinesses(){
+          $showbusiness = $this->businessmodel->read_business_information();
+              
+          
+          
+      }
+   
+ 
+  
+  
      
      
     function removeRegisteredUser($userID){
@@ -488,7 +403,7 @@ public function logoutuser() {
     }
     else{
      
-    echo "Username is avaialable";
+    echo "Username is available";
      
     }
     }
@@ -610,7 +525,7 @@ public function logoutuser() {
 }//class
 
  
-?>
+
 
 
 

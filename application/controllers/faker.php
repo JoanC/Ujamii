@@ -64,17 +64,15 @@ class Faker extends CI_Controller
                 'password' => 'awesomepassword', // run this via your password hashing function
                 'firstName' => $this->faker->firstName,
                 'lastName' => $this->faker->lastName,
-                'address' => $this->faker->streetAddress,
-               // 'city' => $this->faker->city,
-                //'state' => $this->faker->state,
-                //'country' => $this->faker->country,
-               // 'postcode' => $this->faker->postcode,
+//                'age'=> $this->faker->age,
+//                'gender'=> this->faker->gender,
+         
                 'email' => $this->faker->email,
                 //'email_verified' => mt_rand(0, 1) ? '0' : '1',
                 'telephone' => $this->faker->phoneNumber,
                // 'birthdate' => $this->faker->dateTimeThisCentury->format('Y-m-d H:i:s'),
                // 'registration_date' => $this->faker->dateTimeThisYear->format('Y-m-d H:i:s'),
-               // 'ip_address' => mt_rand(0, 1) ? $this->faker->ipv4 : $this->faker->ipv6,
+             
             );
  
             $this->fakerusermodel->faker_insert($data);

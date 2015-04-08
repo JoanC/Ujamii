@@ -34,6 +34,24 @@ if ($query->num_rows() != 0) {
     return false;
 }
 }
+public function read_business_information() {
+
+
+$condition = "lendee_Id =" . "'" . $this->session->userdata('id'). "'";
+$this->db->select('*');
+$this->db->from('Business_tbl');
+$this->db->where($condition);
+$this->db->limit(1);
+
+
+$query = $this->db->get();
+
+if ($query->num_rows() == 1) {
+return $query->result();
+} else {
+return false;
+}
+}
 //
 //// Read data using username and password
 //public function login($data) {
@@ -68,6 +86,18 @@ if ($query->num_rows() != 0) {
 //return false;
 //}
 //}
+function getBusinesses()
+     {
+    $this->db->select('lendee_tbl.firstName,Business_tbl.bus_regId,Business_tbl.business_name,Business_tbl.business_category,Business_tbl.business_rating');
+	$this->db->from('Business_tbl');
+	$this->db->join('lendee_tbl','lendee_tbl.lendee_Id=Business_tbl.lendee_Id','inner');
+	$query=$this->db->get();
+          
+//          $sql = 'SELECT firstName,bus_regId, business_name,business_category,business_rating FROM Business_tbl JOIN lendee_tbl ON Business_tbl.lendee_Id = lendee_tbl.lendee_Id';
+//          $query = $this->db->query($sql);
+          $result = $query->result();
+          return $result;
+     }
 
 }
 

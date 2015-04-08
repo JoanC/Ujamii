@@ -69,11 +69,30 @@
                 
                         <li><a href="<?php echo site_url('index/portfolio');?>">Portfolios</a></li>
                            <?php if($this->session->userdata('username')):?>
-                         <li><a href="<?php echo site_url('index/logoutuser');?>">Logout</a></li> 
-                        <?php else:?><li><a href="<?php echo site_url('index/user_login_process');?>">Login</a></li> <?php endif;?>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="<?php echo site_url('index/userprofile');?>"><i class="fa fa-user fa-fw"></i> <?php echo $this->session->userdata('firstName');?></a>
+                                </li>
+                                <li><a href="<?php echo site_url('lendeeProfile/loanApplication');?>"><i class="fa fa-gear fa-fw"></i> My Loan</a>
+                                </li>
+                                <li><a href="<?php echo site_url('lendeeProfile/registerBusiness');?>"><i class="fa fa-gear fa-fw"></i> My businesses</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo site_url('index/logoutuser');?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                </li>
+                            </ul>
+                    <!-- /.dropdown-user -->
+                        </li>
+                        <?php else:?><li><a href="<?php echo site_url('index/user_login_process');?>">Login</a></li> 
+                            <li><a href="<?php echo site_url('index/register');?>">Signup</a></li> 
+                            
+                            <?php endif;?>
              
                         
-                         <li><a href="<?php echo site_url('index/register');?>">Signup</a></li> 
+                         
                                             
                     </ul>
                 </div>

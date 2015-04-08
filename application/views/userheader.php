@@ -38,13 +38,29 @@
                 <div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="<?php echo site_url('index');?>">Home</a></li>
-                        <li><a href="<?php echo site_url('index');?>">My rating </a></li>
+                        
                 
-                        <li><a href="<?php echo site_url('lendeeProfile/registerBusiness');?>">My business</a></li>
                        
-             
-                         <li><a href="<?php echo site_url('lendeeProfile/loanApplication');?>">Apply loan</a></li> 
-                         <li><a href="<?php echo site_url('index/logoutuser');?>">Logout</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="<?php echo site_url('index/userprofile');?>"><i class="fa fa-user fa-fw"></i> <?php echo $this->session->userdata('firstName');?></a>
+                                </li>
+                                <li><a href="<?php echo site_url('lendeeProfile/loanApplication');?>"><i class="fa fa-gear fa-fw"></i> My loans</a>
+                                </li>
+                                <li><a href="<?php echo site_url('lendeeProfile/registerBusiness');?>"><i class="fa fa-gear fa-fw"></i> My businesses</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo site_url('index/logoutuser');?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                                </li>
+                            </ul>
+                    <!-- /.dropdown-user -->
+                        </li>
+                
+                        <li><a href="<?php echo site_url('lendeeProfile/loanApplication');?>">Apply Loan </a></li>
+                    <li><a href="<?php echo site_url('index');?>">My rating </a></li>
                                             
                     </ul>
                 </div>

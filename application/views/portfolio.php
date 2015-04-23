@@ -18,13 +18,14 @@
 
             <div class="row">
                 <div class="portfolio-items">
+                    <?php(foreach ($data as $pdata);?>)
                     <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-3">
                         <div class="recent-work-wrap">
                             <img class="img-responsive" src="<?php echo base_url();?>images/portfolio/recent/grocery.jpg" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <h3><a href="#">Business theme</a></h3>
-                                    <p>Shoka shiki is a business that begun 5years ago with majority of the owners being youth<. The initiative sells groceries and water.<br>need 15,000 ksh    rating :7.8</p>/p>
+                                    <h3><a href="#"><?php echo $bizname?></a></h3>
+                                    <p><?php echo $bizdescription?> rating :7.8</p>/p>
                                     <a class="preview" href="<?php echo base_url();?>images/portfolio/recent/grocery.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>

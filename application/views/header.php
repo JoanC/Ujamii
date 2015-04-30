@@ -76,9 +76,9 @@
                             <ul class="dropdown-menu dropdown-user">
                                 <li><a href="<?php echo site_url('index/userprofile');?>"><i class="fa fa-user fa-fw"></i> <?php echo $this->session->userdata('firstName');?></a>
                                 </li>
-                                <li><a href="<?php echo site_url('lendeeProfile/loanApplication');?>"><i class="fa fa-gear fa-fw"></i> My Loan</a>
-                                </li>
-                                <li><a href="<?php echo site_url('lendeeProfile/registerBusiness');?>"><i class="fa fa-gear fa-fw"></i> My businesses</a>
+                               
+                                
+                                <li><a href="<?php echo site_url('lendeeProfile/registerBusiness');?>"><i class="fa fa-gear fa-fw"></i> Register businesses</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li><a href="<?php echo site_url('index/logoutuser');?>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

@@ -38,81 +38,85 @@
     ?>
 
 <!-- User Details - START -->
-<div class="container">
+<div style="margin-left: -15px;"class="container">
     <div class="row">
-        <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
+   
+        <div class="container" >
+   
+   
+          <div class="panel panel-info">
             <div class="well details">
-                <div class="col-sm-12">
-                    <div class="col-xs-12 col-sm-8">
-                        <h2 style="text-decoration:underline;"><?php
-                         echo "<b id='welcome'>"."Welcome " . $firstname . " </b>";
+              <h3 style ="color:#262a62;" class="panel-title"><b><?php echo"Welcome ". $first?></b>
+                    <div  class="col-md-5  toppad  pull-right col-md-offset-3 ">
+                        <div>
+<!--                            <a  href="#" >  Edit profile      </a>-->
+                            
 
-                            ?></h2>
-                        <p ><strong>Type: </strong>first time </p>
-                        <p><strong>Business Name: </strong>Shoka shiki</p>
-                        <p><strong>Business type: </strong>service </p>
-                        <p class="text-center skills"><strong>weights</strong></p>
-                        <div class="skillLine"><div class="skill pull-left">personal</div><div class="rating" id="rate1"></div></div>
-                        <div class="skillLine"><div class="skill pull-left">business</div><div class="rating" id="rate2"></div></div>
-                       
-                    </div>
-                    <div class="col-xs-12 col-sm-4 col-lg-1 text-center">                        
-                        <figure>
-                            <span class="fa fa-file-text-o" style="font-size:127px; padding-top: 20px;"></span>                                 
-                            <span style="font-size:27px; padding-top: 20px;">Avg.</span>                                 
-                            <span class="avg">6.2</span>           
-                        </figure>
-                    </div>
-                </div>                
+                        <a  id ="logout" href="<?php echo site_url('index/logoutuser');?>" > Logout</a></div>
+       
+
+      </div>
+              </h3>
+           
             </div>
-        </div>
+            <div class="panel-body">
+              <div class="row">
+                  <div class="col-md-3 col-lg-3 " align="center"> <img src="<?php echo base_url();?>images/profile.jpeg"  class="img-circle"> </div>
+                
+               
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Username:</td>
+                        <td><?php echo $userName?></td>
+                      </tr>
+                      <tr>
+                        <td>Age:</td>
+                        <td><?php echo $age?></td>
+                      </tr>
+                      <tr>
+                        <td>Telephone</td>
+                        <td><?php echo $telephone?></td>
+                      </tr>
+                   
+                         
+                        <tr>
+                        <td>Address</td>
+                        <td><?php echo $address?></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td> <?php echo $email?></td>
+                      </tr>
+                      <tr>
+                        <td>Loanstatus</td>
+                        <td> <?php echo "pending"?></td>
+                      </tr>
+                      <tr>
+                        <td>Rated</td>
+                        <td> <?php echo 6*5 ?></td>
+                      </tr>
+                        
+                     
+                    </tbody>
+                  </table>
+                  
+                    <a href="#" class="btn btn-primary">Edit Business details </a>
+                 <a href="?php echo site_url('index/editPersonal');?>" class="btn btn-primary">Edit Personal Details</a>
+                </div>
+              </div>
+            </div>
+<!--                 <div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                    </div>-->
     </div>
 </div>
 
-<!--<style>
-body {
-    font-family: "Segoe UI", 'sans-serif';
-}
-
-.avg {
-    font-size:77px; 
-    padding-top: 20px;
-    color:#5CB85C;
-}
-
-.details {
-    min-height: 355px;
-    display: inline-block;
-}
-
-.rating {
-    padding-left:40px;
-}
-
-.skillLine {    
-    display:inline-block;
-    width:100%;
-    padding: 3px 4px;    
-}
-
-.skills {
-    text-decoration:underline;
-}
-
-div.skill {
-    background: #F58723;
-    border-radius: 3px;
-    color: white;
-    font-weight: bold;
-    padding: 3px 4px;    
-    width:70px;
-}
-</style>-->
-
-<!-- you need to include the shieldui css and js assets in order for the charts to work 
-<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/shieldui-all.min.css" />
-<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
-<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>-->
 
 <script type="text/javascript">
 jQuery(function ($) {

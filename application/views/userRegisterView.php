@@ -165,16 +165,20 @@ echo "</div>";
     </div>
   
   </div>
-    
-     <div class="form-group">
+    <div class ="form-group">
   
-    <label>Age </label>
-    <div class="input-group">
-    <input type="text" name="age" value="<?php echo set_value('age'); ?>" onchange="validateForm('age',this.value,'txtAge')"/>
-    <span class="input-group-addon"><span ></span></span>
+    <label>Gender </label>
+    <div class ="input-group">
+    Female<input type="radio" name="gender" value="female" />
+    Male<input type="radio" name="gender" value="male" />
+      <span class="input-group-addon"><span ></span></span>
     </div>
+    
   
-  </div> 
+    </div>
+    
+ 
+                            
     
     <div class ="form-group">
   

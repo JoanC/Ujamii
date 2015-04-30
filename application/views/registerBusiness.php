@@ -1,9 +1,16 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 <style>
-    .error{
+    .error .error_message{
         color:red;
     }
 </style>
+<?php
+if (isset($error_message)) {
+echo "<div class='message'>";
+echo $error_message;
+echo "</div>";
+}
+?> 
 <div class="container">
     <div class="row">
     

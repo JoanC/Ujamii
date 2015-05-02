@@ -28,7 +28,7 @@ else{
 }
 function getLoans()
      {
-    $this->db->select('lendee_tbl.firstName,Loan_tbl.loan_amount,Loan_tbl.payment_period,Loan_tbl.application_date,Loan_tbl.uploaded_file');
+    $this->db->select('lendee_tbl.firstName,lendee_tbl.rating,Loan_tbl.loan_amount,Loan_tbl.payment_period,Loan_tbl.application_date,Loan_tbl.uploaded_file');
 	$this->db->from('Loan_tbl');
 	$this->db->join('lendee_tbl','lendee_tbl.lendee_Id=Loan_tbl.lendee_Id','inner');
 	$query=$this->db->get();
@@ -38,7 +38,32 @@ function getLoans()
           $result = $query->result();
           return $result;
      }
+     function getLoanStatus($id){
+       $condition = "lendee_Id =" . "'" . $id . "'";
+        $this->db->select('status');
+        $this->db->from('Loan_tbl');
+        $this->db->where($condition);
+        $this->db->limit(1);
 
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            return $query->result();
+        } else {
+            return false;
+        }
+         
+         
+     }
+     public function getWeights(){
+         
+         $this->db->select('*');
+         $this->db->from('weights');
+         $query=$this->db->get();
+         return $query->result();
+         
+     }
 
 }
 

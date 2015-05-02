@@ -95,7 +95,7 @@
                       </tr>
                       <tr>
                         <td>Rated</td>
-                        <td> <?php echo 6*5 ?></td>
+                        <td> <?php echo $rating ?></td>
                       </tr>
                         
                      
@@ -103,7 +103,7 @@
                   </table>
                   
                     <a href="#" class="btn btn-primary">Edit Business details </a>
-                 <a href="?php echo site_url('index/editPersonal');?>" class="btn btn-primary">Edit Personal Details</a>
+                 <a href="<?php echo site_url('index/editPersonal');?>" class="btn btn-primary">Edit Personal Details</a>
                 </div>
               </div>
             </div>

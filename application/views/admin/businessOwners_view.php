@@ -181,7 +181,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Users<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<?php echo site_url('admin/showBusinessOwners');?>">Business owners</a>
+                                    <a href="#">Business owners</a>
                                 </li>
                                 <li>
                                     <a href="#">Investors</a>
@@ -210,7 +210,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Ujamii loans</h1>
+                    <h1 class="page-header">Registered Business Owners </h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -221,7 +221,7 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Loans
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Businesses
                             <div class="pull-right">
 <!--                                <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -252,27 +252,29 @@
                     <thead>
                          <tr>
                                 <th>#</th>
-                              <th>Borrower</th>
-                              <th>Loan amount</th>
-<!--                              <th>repayment period </th>-->
-                               <th>Rating</th>
-                              <th>Application date</th>
-                              <th>Uploaded file</th>
+                              <th>First name</th>
+                              <th>Last name</th>
+                              <th>age</th>
+                              <th>Marital status</th>
+                              <th>dependents</th>
+                              <th>Housing</th>
+                              <th>telephone</th>
+                          
                              
-                              <th>Approve</th>
                          </tr>
                     </thead>
                     <tbody>
-                         <?php for ($i = 0; $i < count($loanlist); ++$i) { ?>
+                         <?php for ($i = 0; $i < count($bizownerslist); ++$i) { ?>
                               <tr>
                                    <td><?php echo ($i+1); ?></td>
-                                   <td><?php echo $loanlist[$i]->firstName; ?></td>
-                                   <td><?php echo $loanlist[$i]->loan_amount; ?></td>
-                                    <td><?php echo $loanlist[$i]->rating; ?></td>
-                                   <td><?php echo $loanlist[$i]->application_date; ?></td>
-                                   <td><?php echo $loanlist[$i]->uploaded_file; ?></td>
-                                   <td></td>
-                                  
+                                   <td><?php echo $bizownerslist[$i]->firstName; ?></td>
+                                   <td><?php echo $bizownerslist[$i]->lastName; ?></td>
+                                   <td><?php echo $bizownerslist[$i]->age; ?></td>
+                                   <td><?php echo $bizownerslist[$i]->maritalStatus; ?></td>
+                                   <td><?php echo $bizownerslist[$i]->No_of_dependents; ?></td>
+                                    <td><?php echo $bizownerslist[$i]->Housing; ?></td>
+                                    <td><?php echo $bizownerslist[$i]->telephone; ?></td>
+                                    
                                    
                               </tr>
                          <?php } ?>

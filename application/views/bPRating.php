@@ -28,16 +28,7 @@
                 <div class="col-xs-12">
                     <div class="col-md-12">
                         <div class="well well-sm"><strong><span ></span>Personal details</strong></div>
-
-                        <div class="form-group">
-                            <label class="control-label">Gender</label><br>
-                            <?php echo form_error('gender'); ?>
-                            <table>
-                                <tr><td>Female  </td><td><input   class="form-control"  type="radio" name="gender" value="female" /> </td></tr>
-                                <tr><td>Male  </td><td><input   class="form-control"  type="radio" name="gender" value="male" /> </td></tr>
-                            </table>
-
-                        </div>
+                        
                         <div class="form-group">
                             <label class="control-label">Marital Status</label>
                             <?php echo form_error('maritalStatus'); ?>
@@ -47,6 +38,15 @@
                                 <tr> <td>Divorced</td> <td><input   class="form-control"  type="radio" name="maritalStatus" value="divorced" /></td></tr>
                             </table>
                         </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label">Age </label>                          
+                            <?php echo form_error('age'); ?>
+                            <input type="text" name="age"  class="form-control" value="<?php echo set_value('age'); ?>" onchange="validateForm('age', this.value, 'txtAge')"/>
+
+                        </div> 
+
+
 
                         <div class="form-group">
 
@@ -54,7 +54,7 @@
                             <?php echo form_error('dependents'); ?>
                             <input  type="text" name = "dependents" required="required" class="form-control" value=" <?php echo set_value('dependents'); ?>" />
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="control-label">Housing</label>
                             <?php echo form_error('housing'); ?>
@@ -76,7 +76,7 @@
                         <div class="well well-sm"><strong><span ></span>Business details</strong></div>
                         <div class="form-group">
                             <label class="control-label">Number of employees</label>
-                             <?php echo form_error('numEmployees'); ?>
+                            <?php echo form_error('numEmployees'); ?>
                             <input  type="text" name ="numEmployees" required="required" class="form-control" value=" <?php echo set_value('numEmployees'); ?>"   />
                         </div>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html >
+
 <head>
 <style type="text/css">
  
@@ -83,122 +83,123 @@ xmlhttp.send(parameters);
  
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 </head>
-<body>
-<?php
-$this->load->helper('form');
-$this->load->library('form_validation');
-$this->load->helper('url');
- 
-$this->form_validation->set_error_delimiters('<div class="error_color">', '</div>');
- 
-echo form_open(base_url().'index/editUser',array('method'=>'post'));
-?>
-<table>
+<style>
+    .error{
+        color:red;
+    }
+</style>
 
+    <div class="container">
+ <form role="form" action="<?php echo site_url('index/editUser'); ?>" method="post">
+         <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+<div class="form-group">
+                    <label class="control-label">Username </label>
+                    <?php echo form_error('username'); ?>
+                    <input  type="text" name = "username" value="<?php if(isset($username)){ echo $username; }else{ echo set_value('username'); } ?>"required="required" class="form-control"  />
+                </div>
+ 
+              <div class="form-group">
+                    <label class="control-label">First Name </label>
+                    <?php echo form_error('firstName'); ?>
+                    <input  type="text" name = "firstName" value="<?php if(isset($firstName)){ echo $firstName; }else{ echo set_value('firstName'); } ?>"required="required" class="form-control"  />
+                </div>
+   <div class="form-group">
+                    <label class="control-label">Last Name </label>
+                    <?php echo form_error('lastName'); ?>
+                    <input  type="text" name = "lastName" value="<?php if(isset($lastName)){ echo $lastName; }else{ echo set_value('lastName'); } ?>"required="required" class="form-control"  />
+                </div>
    
-  <tr>
-    <td><label>First Name </label></td>
-    <td><input type="text" name="firstName" value="<?php if(isset($firstName)){ echo $firstName; }else{ echo set_value('firstName'); } ?>" onchange="validateForm('firstName',this.value,'txtFirstName')" />
-    </td>
-    <td><p><span id="txtFirstName"> <?php echo form_error('firstName'); ?> </span></p></td>
-  </tr>
-   
-  <tr>
-    <td><label>Last Name </label></td>
-    <td><input type="text" name="lastName" value="<?php if(isset($lastName)){ echo $lastName; }else{ echo set_value('lastName'); } ?>" onchange="validateForm('lastName',this.value,'txtLastName')"  />
-    </td>
-    <td><p><span id="txtLastName"> <?php echo form_error('lastName'); ?> </span></p></td>
-  </tr>
+ 
    
   
    
-  <tr>
-    <td><label>Age </label></td>
-    <td><input type="text" name="age" value="<?php if(isset($age)){ echo $age; }else{ echo set_value('age'); } ?>" onchange="validateForm('age',this.value,'txtAge')" />
-    </td>
-    <td><p><span id="txtAge"> <?php echo form_error('age'); ?> </span></p></td>
-  </tr>
+  <div class="form-group">
+    <label class="control-label">Age </label>
+    <?php echo form_error('age'); ?>
+    <input type="text" name="age" value="<?php if(isset($age)){ echo $age; }else{ echo set_value('age'); } ?>" required="required" class="form-control" />
+     </div>
+    
+  
       <div class="form-group">
-                    <label class="control-label">Gender</label><br>
+                   
                     <table>
-                    <tr><td>Female  </td><td><input   class="form-control"  type="radio" name="gender" value="female" /> </td></tr>
-                    <tr><td>Male  </td><td><input   class="form-control"  type="radio" name="gender" value="male" /> </td></tr>
+                         <label class="control-label">Gender</label><br>
+                        
+                    <tr><td>Female  </td><td><input   class="form-control"  type="radio" name="gender" value="<?php if(isset($gender)){ echo $gender; }else{ echo set_value('female'); } ?>" /> </td></tr>
+                    <tr><td>Male  </td><td><input   class="form-control"  type="radio" name="gender" value="<?php if(isset($gender)){ echo $gender; }else{ echo set_value('male'); } ?>" /> </td></tr>
                     </table>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Marital Status</label>
+            <div class="form-group">
+                   
                     <table>
-                        <tr> <td>Single</td> <td><input   class="form-control"  type="radio" name="maritalStatus" value="single" /></td></tr>
-                      <tr> <td>Married</td> <td><input   class="form-control"  type="radio" name="maritalStatus" value="married" /></td></tr>
-                     <tr> <td>Divorced</td> <td><input   class="form-control"  type="radio" name="maritalStatus" value="divorced" /></td></tr>
+                         <label class="control-label">Marital Status</label><br>
+                           
+                    <tr><td>Single  </td><td><input   class="form-control"  type="radio" name="maritalStatus" value="<?php if(isset($maritalStatus)){ echo $maritalStatus; }else{ echo set_value('single'); } ?>" /> </td></tr>
+                    <tr><td>Married  </td><td><input   class="form-control"  type="radio" name="maritalStatus" value="<?php if(isset($maritalStatus)){ echo $maritalStatus; }else{ echo set_value('married'); } ?>" /> </td></tr>
+                    <tr><td>Divorced </td><td><input   class="form-control"  type="radio" name="maritalStatus" value="<?php if(isset($maritalStatus)){ echo $maritalStatus; }else{ echo set_value('divorced'); } ?>" /> </td></tr>
+
                     </table>
                 </div>
               
+              
                  <div class="form-group">
                     <label class="control-label">Number of dependents</label>
-                    <input  type="text" name = "dependents" required="required" class="form-control"  />
+                    <?php echo form_error('dependents'); ?>
+                    <input  type="text" name = "dependents" value="<?php if(isset($dependents)){ echo $dependents; }else{ echo set_value('Free'); } ?>"required="required" class="form-control"  />
                 </div>
+    
                  <div class="form-group">
                     <label class="control-label">Housing</label>
+                    
                      <select  class="form-control" name="housing" id="InputName" >
-                            <option value="Free">Free</option>
-                            <option value="Rent">Rent</option>
-                            <option value="Own">Own</option>
+                            <option value="<?php if(isset($housing)){ echo $housing; }else{ echo set_value('Free'); } ?>">Free</option>
+                            <option value="<?php if(isset($housing)){ echo $housing; }else{ echo set_value('Rent'); } ?>">Rent</option>
+                            <option value="<?php if(isset($housing)){ echo $housing; }else{ echo set_value('Own'); } ?>">Own</option>
     
                         </select>
                     
                 </div>
    
-  <tr>
-    <td><label>Address </label></td>
-    <td><input type="text" name="address" value="<?php if(isset($address)){ echo $address; }else{ echo set_value('address'); } ?>" onchange="validateForm('address',this.value,'txtAddress')" />
-    </td>
-    <td><p><span id="txtAddress"> <?php echo form_error('address'); ?> </span></p></td>
-  </tr>
-  <tr>
-    <td><label>Email </label></td>
-    <td><input type="text" name="email" value="<?php if(isset($email)){ echo $email; }else{ echo set_value('email'); } ?>" onchange="validateForm('email',this.value,'txtEmail')" />
-    </td>
-    <td><p><span id="txtEmail"> <?php echo form_error('email'); ?> </span></p></td>
-  </tr>
+ <div class="form-group">
+    <label class="control-label">Address </label>
+    <?php echo form_error('address'); ?>
+    <input type="text" name="address" value="<?php if(isset($address)){ echo $address; }else{ echo set_value('address'); } ?>" required="required" class="form-control" />
+    
    
-  <tr>
-    <td><label>Telephone </label></td>
-    <td><input type="text" name="telephone" value="<?php if(isset($telephone)){ echo $telephone; }else{ echo set_value('telephone'); } ?>" onchange="validateForm('telephone',this.value,'txtTelephone')" />
-    </td>
-    <td><p><span id="txtTelephone"> <?php echo form_error('telephone'); ?> </span></p></td>
-  </tr>
-     <tr>
-    <td><label>Gender </label></td>
-    <td><input type="text" name="gender" value="<?php if(isset($telephone)){ echo $telephone; }else{ echo set_value('telephone'); } ?>" onchange="validateForm('telephone',this.value,'txtTelephone')" />
-    </td>
-    <td><p><span id="txtTelephone"> <?php echo form_error('telephone'); ?> </span></p></td>
-  </tr>
-     <tr>
-    <td><label>Marital status </label></td>
-    <td><input type="text" name="telephone" value="<?php if(isset($telephone)){ echo $telephone; }else{ echo set_value('telephone'); } ?>" onchange="validateForm('telephone',this.value,'txtTelephone')" />
-    </td>
-    <td><p><span id="txtTelephone"> <?php echo form_error('telephone'); ?> </span></p></td>
-  </tr>
-     <tr>
-    <td><label>Number of dependents </label></td>
-    <td><input type="text" name="telephone" value="<?php if(isset($telephone)){ echo $telephone; }else{ echo set_value('telephone'); } ?>" onchange="validateForm('telephone',this.value,'txtTelephone')" />
-    </td>
-    <td><p><span id="txtTelephone"> <?php echo form_error('telephone'); ?> </span></p></td>
-  </tr>
-     <tr>
-    <td><label>Housing</label></td>
-    <td><input type="text" name="telephone" value="<?php if(isset($telephone)){ echo $telephone; }else{ echo set_value('telephone'); } ?>" onchange="validateForm('telephone',this.value,'txtTelephone')" />
-    </td>
-    <td><p><span id="txtTelephone"> <?php echo form_error('telephone'); ?> </span></p></td>
-  </tr>
+    </div>
+    <div class="form-group">
+  
+    <label class="control-label">Email </label>
+    <?php echo form_error('email'); ?>
+    <input type="text" name="email" value="<?php if(isset($email)){ echo $email; }else{ echo set_value('email'); } ?>" required="required" class="form-control"/>
+    
    
-</table>
-<input type="submit" value="Save"  class="registration_textfield" />
-<?php
-echo  form_close(); 
-?>
-</body>
-</html>
+  
+    </div>
+   
+  <div class="form-group">
+    <label class="control-label">Telephone </label>
+    <?php echo form_error('telephone'); ?>
+    <input type="text" name="telephone" value="<?php if(isset($telephone)){ echo $telephone; }else{ echo set_value('telephone'); } ?>" required="required" class="form-control"/>
+    
+    
+  </div>
+    
+   
+
+    <div class="row setup-content" id="step-3">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                        <!--                <h3> Step 3</h3>-->
+                        <input type="submit" name="submit"  value="Save" >
+                        <!--                <button class="btn btn-success btn-lg pull-right" type="submit">Rate!</button>-->
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+    </div>

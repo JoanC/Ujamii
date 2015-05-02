@@ -76,14 +76,14 @@ class UserModel extends CI_Model {
     }    
      
      
-    function getAge(){
+    function getGender(){
      
-    return $this->age;
+    return $this->gender;
     }
      
-    function setAge($ageProvided){
+    function setGender($genderProvided){
      
-    $this->age=$ageProvided;
+    $this->gender=$genderProvided;
      
     }
      
@@ -123,8 +123,38 @@ class UserModel extends CI_Model {
     $this->password=$passwordProvided;
      
     }
+     function getMaritalStatus(){
      
+    return $this->maritalStatus;
+    }
      
+    function setMaritalStatus($maritalStatusProvided){
+     
+    $this->maritalStatus=$maritalStatusProvided;
+     
+    }
+     
+     function getDependents(){
+     
+    return $this->No_of_dependents;
+    }
+     
+    function setDependents($dependentsProvided){
+     
+    $this->No_of_dependents=$dependentsProvided;
+     
+    }
+    
+    function getHousing(){
+     
+    return $this->Housing;
+    }
+     
+    function setHousing($housingProvided){
+     
+    $this->Housing=$housingProvided;
+     
+    }
          
 }//class
          

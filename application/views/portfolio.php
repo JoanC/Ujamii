@@ -29,7 +29,8 @@
                             <div class="overlay">
                                 <div class="recent-work-inner">
                                     <h3><a href="#"><?php echo $bizdetails[$i]->business_name; ?></a></h3>
-                                    <p><?php echo $bizdetails[$i]->business_description; ?> rating :7.8</p>
+                                    <p><?php echo $bizdetails[$i]->business_description; ?></p>
+                                    <p><?php echo $bizdetails[$i]->business_rating; ?> </p>
                                     <a class="preview" href="<?php echo base_url();?>images/portfolio/recent/grocery.jpg" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
                                 </div> 
                             </div>

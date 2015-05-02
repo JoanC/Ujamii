@@ -58,7 +58,13 @@
                     <label >Purpose</label>
                      <?php echo form_error('purpose'); ?>
                            <div class="input-group">
-                                <input type="text" class="form-control" name="purpose" id="InputName" value=" <?php echo set_value('purpose'); ?>" required>
+                                
+                                <select  class="form-control" name="purpose" id="InputName" value=" <?php echo set_value('purpose'); ?>" >
+                            <option value="businessExpenses">business expenses</option>
+                            <option value="expandBusiness">start or expand business</option>
+                            <option value="initiateAproject">Initiate a project</option>
+    
+                        </select>
                                 <span class="input-group-addon"><span ></span></span>
                            </div>
          </div>

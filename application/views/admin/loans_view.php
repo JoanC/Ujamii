@@ -195,7 +195,9 @@
                         <li>
                             <a href="<?php echo site_url('admin/loadBusinesses');?>"><i class="fa fa-edit fa-fw"></i> Businesses</a>
                         </li>
-                        
+                        <li>
+                                <a href="<?php echo site_url('admin/editWeights'); ?>"><i class="fa fa-table fa-fw"></i> Adjust weights</a>
+                            </li>
                       
                         
                         
@@ -252,14 +254,18 @@
                     <thead>
                          <tr>
                                 <th>#</th>
-                              <th>Borrower</th>
+                              <th>First Name</th>
+                              <th>Last Name</th>
                               <th>Loan amount</th>
+                              
 <!--                              <th>repayment period </th>-->
                                <th>Rating</th>
+                               <th>Classified</th>
+                               <th>Business Name
                               <th>Application date</th>
-                              <th>Uploaded file</th>
                              
-                              <th>Approve</th>
+                             
+                              <th>Status</th>
                          </tr>
                     </thead>
                     <tbody>
@@ -267,10 +273,13 @@
                               <tr>
                                    <td><?php echo ($i+1); ?></td>
                                    <td><?php echo $loanlist[$i]->firstName; ?></td>
+                                   <td><?php echo $loanlist[$i]->lastName; ?></td>
                                    <td><?php echo $loanlist[$i]->loan_amount; ?></td>
                                     <td><?php echo $loanlist[$i]->rating; ?></td>
-                                   <td><?php echo $loanlist[$i]->application_date; ?></td>
-                                   <td><?php echo $loanlist[$i]->uploaded_file; ?></td>
+                                    <td> <?php if($loanlist[$i]->rating<7.9){echo "High risk";} else if(($loanlist[$i]->rating<11.9) && ($loanlist[$i]->rating>8)){echo "Medium risk"; }else if ($loanlist[$i]->rating>12.0){echo "Low risk";}?></td>
+                                   <td><?php echo $loanlist[$i]->business_name; ?></td>
+                                    <td><?php echo $loanlist[$i]->application_date; ?></td>
+                                   <td><a>Pending</a></td>
                                    <td></td>
                                   
                                    

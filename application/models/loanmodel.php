@@ -28,9 +28,12 @@ else{
 }
 function getLoans()
      {
-    $this->db->select('lendee_tbl.firstName,lendee_tbl.rating,Loan_tbl.loan_amount,Loan_tbl.payment_period,Loan_tbl.application_date,Loan_tbl.uploaded_file');
-	$this->db->from('Loan_tbl');
+    $this->db->select('lendee_tbl.firstName,lendee_tbl.lastName,lendee_tbl.rating,Business_tbl.business_name,Loan_tbl.loan_amount,Loan_tbl.payment_period,Loan_tbl.application_date,Loan_tbl.uploaded_file');
+   $this->db->order_by("lendee_tbl.rating","desc");	
+    $this->db->from('Loan_tbl');
 	$this->db->join('lendee_tbl','lendee_tbl.lendee_Id=Loan_tbl.lendee_Id','inner');
+        $this->db->join('Business_tbl ', 'lendee_tbl.lendee_Id = Business_tbl.lendee_Id','INNER');
+        
 	$query=$this->db->get();
           
 //          $sql = 'SELECT firstName,bus_regId, business_name,business_category,business_rating FROM Business_tbl JOIN lendee_tbl ON Business_tbl.lendee_Id = lendee_tbl.lendee_Id';

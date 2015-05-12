@@ -18,6 +18,7 @@ class Admin extends CI_Controller {
 // Load database
         $this->load->model('businessmodel');
         $this->load->model('loanmodel');
+        
     }
 
     public function suAdmin() {
@@ -79,5 +80,81 @@ class Admin extends CI_Controller {
         }
         redirect('disbursments/disbursment');
     }
+     public function editWeights() {
+
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->model("weightmodel");
+        $this->load->model("suadminservice");
+        $this->load->helper("url");
+
+        $weightModel = new Weightmodel();
+        $adminService = new Suadminservice();
+//        $userID = $this->session->userdata('id');
+//        $userModel->setUserID($userID);
+
+        $retrievedWeightData = $adminService->getWeights($weightModel);
+       
+        $this->load->view("admin/adjustWeights", $retrievedWeightData);
+//     $this->load->view('userheader');
+//     $this->load->view('bPRating');
+    }
+     public function adjustWeights() {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+       $this->load->model("weightmodel");
+        $this->load->model("suadminservice");
+
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        $this->form_validation->set_rules('age', 'age', 'required|');
+        $this->form_validation->set_rules('customer_type', 'customer_type', 'required');
+        $this->form_validation->set_rules('housing', 'housing', 'required');
+        $this->form_validation->set_rules('gender', 'gender', 'required');
+        $this->form_validation->set_rules('purpose', 'purpose');
+        $this->form_validation->set_rules('marital_status', 'maritalstatus');
+        $this->form_validation->set_rules('dependents', 'deps', 'max_length[2]');
+        $this->form_validation->set_rules('loan_amount', 'loan_amount');
+
+        $this->form_validation->set_rules('business_type', 'business_type', 'required');
+        $this->form_validation->set_rules('income', 'income', 'required');
+        $this->form_validation->set_rules('asset_worth', 'asset worth', 'required');
+        $this->form_validation->set_rules('num_employees', 'num_employees', 'required');
+        $this->form_validation->set_rules('business_existence', 'business_existence', 'required');
+//  var_dump($this->form_validation->run());
+
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('editPersonal');
+        } else if ($this->form_validation->run() == true) {
+            $editweightData = array(
+                'age' => $this->input->post('age'),
+                'customer_type' => $this->input->post('customer_type'),
+                'housing' => $this->input->post('housing'),
+                'gender' => $this->input->post('gender'),
+                'marital_status' => $this->input->post('marital_status'),
+                'dependents' => $this->input->post('dependents'),
+                'purpose' => $this->input->post('purpose'),
+                'loan_amount' => $this->input->post('loan_amount'),
+                'business_type' => $this->input->post('business_type'),
+                'income' => $this->input->post('income'),
+                'asset_worth' => $this->input->post('asset_worth'),
+                'num_employees' => $this->input->post('num_employees'),
+                    'business_existence' => $this->input->post('business_existence')
+//            $userModel->setUserID($this->input->post('userID', TRUE));
+            );
+
+            $dbCommited = $this->suadminservice->editweightDetails($editweightData);
+            // var_dump($dbCommited);
+
+            if ($dbCommited) {
+                echo 'Success';
+                redirect('admin/suAdmin'); //with success message
+            } else {
+
+                redirect(base_url()); //with error message
+            }
+        }//else            
+    }
+
 
 }

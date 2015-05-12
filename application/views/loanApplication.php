@@ -61,7 +61,7 @@
                                 
                                 <select  class="form-control" name="purpose" id="InputName" value=" <?php echo set_value('purpose'); ?>" >
                             <option value="businessExpenses">business expenses</option>
-                            <option value="expandBusiness">start or expand business</option>
+                            <option value="expandBusiness">expand business</option>
                             <option value="initiateAproject">Initiate a project</option>
     
                         </select>

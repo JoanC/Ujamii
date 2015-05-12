@@ -195,7 +195,9 @@
                         <li>
                             <a href="<?php echo site_url('admin/loadBusinesses');?>"><i class="fa fa-edit fa-fw"></i> Businesses</a>
                         </li>
-                        
+                         <li>
+                                <a href="<?php echo site_url('admin/editWeights'); ?>"><i class="fa fa-table fa-fw"></i> Adjust weights</a>
+                            </li>
                       
                         
                         
@@ -210,7 +212,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Registered Businesses</h1>
+                    <h1 class="page-header">Adjust weights for ratings</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -221,7 +223,7 @@
                     <!-- /.panel -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Businesses
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Adjust Weights
                             <div class="pull-right">
 <!--                                <div class="btn-group">
                                     <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -244,38 +246,112 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
+                            
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
-<!--                                       <table class="table table-striped table-hover">-->
-                    <thead>
-                         <tr>
-                                <th>#</th>
-                              <th>Owner</th>
-                              <th>Registration Number</th>
-                              <th>Business Name</th>
-                              <th>Category</th>
-                              <th>Rating</th>
-                              <th>Approve</th>
-                         </tr>
-                    </thead>
-                    <tbody>
-                         <?php for ($i = 0; $i < count($bizlist); ++$i) { ?>
-                              <tr>
-                                   <td><?php echo ($i+1); ?></td>
-                                   <td><?php echo $bizlist[$i]->firstName; ?></td>
-                                   <td><?php echo $bizlist[$i]->bus_regId; ?></td>
-                                   <td><?php echo $bizlist[$i]->business_name; ?></td>
-                                   <td><?php echo $bizlist[$i]->business_category; ?></td>
-                                   <td><?php echo $bizlist[$i]->business_rating; ?></td>
-                                   <td></td>
-                              </tr>
-                         <?php } ?>
-                    </tbody>
-               </table>
+                                    
+                                          
+ <form role="form" action="<?php echo site_url('admin/adjustWeights'); ?>" method="post">
+    
+       
+
+
+                    <label class="control-label">Age</label>
+                    <?php echo form_error('age'); ?>
+                    <input  type="text" name = "age" value="<?php if(isset($age)){ echo $age; }else{ echo set_value('age'); } ?>"required="required" class="form-control"  />
+              
+ 
+              <div class="form-group">
+                    <label class="control-label">Customer type </label>
+                    <?php echo form_error('customer_type'); ?>
+                    <input  type="text" name = "customer_type" value="<?php if(isset($customer_type)){ echo $customer_type; }else{ echo set_value('customer_type'); } ?>"required="required" class="form-control"  />
+                </div>
+   <div class="form-group">
+                    <label class="control-label">Housing </label>
+                    <?php echo form_error('housing'); ?>
+                    <input  type="text" name = "housing" value="<?php if(isset($housing)){ echo $housing; }else{ echo set_value('housing'); } ?>"required="required" class="form-control"  />
+                </div>
+   
+ 
+   
+  
+   
+  <div class="form-group">
+    <label class="control-label">Gender </label>
+    <?php echo form_error('gender'); ?>
+    <input type="text" name="gender" value="<?php if(isset($gender)){ echo $gender; }else{ echo set_value('gender'); } ?>" required="required" class="form-control" />
+     </div>
+           
+    <div class="form-group">
+    <label class="control-label">Marital Status </label>
+    <?php echo form_error('marital_status'); ?>
+    <input type="text" name="marital_status" value="<?php if(isset($marital_status)){ echo $marital_status; }else{ echo set_value('marital_status'); } ?>" required="required" class="form-control" />
+     </div>
+         <div class="form-group">
+    <label class="control-label">Dependents </label>
+    <?php echo form_error('dependents'); ?>
+    <input type="text" name="dependents" value="<?php if(isset($dependents)){ echo $dependents; }else{ echo set_value('dependents'); } ?>" required="required" class="form-control" />
+     </div>
+             <div class="form-group">
+    <label class="control-label">Loan purpose </label>
+    <?php echo form_error('purpose'); ?>
+    <input type="text" name="purpose" value="<?php if(isset($purpose)){ echo $purpose; }else{ echo set_value('purpose'); } ?>" required="required" class="form-control" />
+     </div>
+             <div class="form-group">
+    <label class="control-label">Marital Status </label>
+    <?php echo form_error('loan_amount'); ?>
+    <input type="text" name="loan_amount" value="<?php if(isset($loan_amount)){ echo $loan_amount; }else{ echo set_value('loan_amount'); } ?>" required="required" class="form-control" />
+     </div>
+             <div class="form-group">
+    <label class="control-label">Business type </label>
+    <?php echo form_error('business_type'); ?>
+    <input type="text" name="business_type" value="<?php if(isset($business_type)){ echo $business_type; }else{ echo set_value('business_type'); } ?>" required="required" class="form-control" />
+     </div>
+             <div class="form-group">
+    <label class="control-label">Business monthly income </label>
+    <?php echo form_error('income'); ?>
+    <input type="text" name="income" value="<?php if(isset($income)){ echo $income; }else{ echo set_value('income'); } ?>" required="required" class="form-control" />
+     </div>
+             <div class="form-group">
+    <label class="control-label">Assets worth </label>
+    <?php echo form_error('asset_worth'); ?>
+    <input type="text" name="asset_worth" value="<?php if(isset($asset_worth)){ echo $asset_worth; }else{ echo set_value('asset_worth'); } ?>" required="required" class="form-control" />
+     </div>
+             <div class="form-group">
+    <label class="control-label">Number of employees </label>
+    <?php echo form_error('num_employees'); ?>
+    <input type="text" name="num_employees" value="<?php if(isset($num_employees)){ echo $num_employees; }else{ echo set_value('num_employees'); } ?>" required="required" class="form-control" />
+     </div>
+   <div class="form-group">
+    <label class="control-label">Existence of Business </label>
+    <?php echo form_error('business_existence'); ?>
+    <input type="text" name="business_existence" value="<?php if(isset($business_existence)){ echo $business_existence; }else{ echo set_value('business_existence'); } ?>" required="required" class="form-control" />
+     </div>
+     
+            
+              
+              
+             
+   
+
+   
+ 
+    
+   
+
+    <div class="row setup-content" id="step-3">
+                <div class="col-xs-12">
+                    <div class="col-md-12">
+                        <!--                <h3> Step 3</h3>-->
+                        <input type="submit" name="submit"  value="Save" >
+                        <!--                <button class="btn btn-success btn-lg pull-right" type="submit">Rate!</button>-->
+                    </div>
+                </div>
+            </div>
+                                   
+ </form>
                                         
-                                    </div>
+                                    
                                     <!-- /.table-responsive -->
                                 </div>
                                 <!-- /.col-lg-4 (nested) -->
@@ -367,3 +443,4 @@
 </body>
 
 </html>
+

@@ -105,7 +105,7 @@ class LendeeProfile extends CI_Controller {
                     'loan_amount' => $this->input->post('loanAmount'),
                     'monthly_installment' => $this->input->post('monthlyInstallment'),
                     'payment_period' => $this->input->post('paymentPeriod'),
-                    'purpose' => $this->input->post('businessDescription'),
+                    'purpose' => $this->input->post('purpose'),
                     //'application_date' => @date('Y-m-d', ($this->input->post('applicationDate'))),
                     'application_date' => $this->input->post('applicationDate'),
                     'uploaded_file' => $upload_data['file_name'],

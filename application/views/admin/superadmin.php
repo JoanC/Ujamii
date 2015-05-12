@@ -195,7 +195,9 @@
                             <li>
                                 <a href="<?php echo site_url('admin/loadBusinesses'); ?>"><i class="fa fa-edit fa-fw"></i> Businesses</a>
                             </li>
-
+                             <li>
+                                <a href="<?php echo site_url('admin/editWeights'); ?>"><i class="fa fa-table fa-fw"></i> Adjust weights</a>
+                            </li>
 
 
 

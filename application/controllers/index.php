@@ -243,133 +243,164 @@ class Index extends CI_Controller {
             $rateWeight['loan_amountW'] = $weight->loan_amount;
         }
         //*****ADD THIS FOR NEW USERS******
-        //error_reporting(0);
+        error_reporting(0);
         $rating = 0;
         $businessrating = 0;
         $personalrating = 0;
+        
         //********rating on personal details**********
         //age
         if ($ratedata['age'] >= 18 && $ratedata['age'] <= 25) {
-            $rating = ($rating + 2) * $rateWeight['ageW'];
+           $age18rate= 2* $rateWeight['ageW'];
+            $rating +=$age18rate ;
         } else if ($ratedata['age'] >= 26 && $ratedata['age'] <= 55) {
-            $rating = ($rating + 3) * $rateWeight['ageW'];
+            $age26rate=3*$rateWeight['ageW'];
+            $rating +=$age26rate ;
         } else if ($ratedata['age'] >= 56 && $ratedata['age'] <= 100) {
-            $rating = ($rating + 1) * $rateWeight['ageW'];
+            $age56rate=1*$rateWeight['ageW'];
+            $rating += $age56rate;
         }
+//        echo $rating;
         //customer type
         if ($ratedata['customer_type'] == "first") {
-            $rating+=0;
-            $rating*= $rateWeight['customer-typeW'];
+           $typefirst=0*$rateWeight['customer-typeW'];
+            $rating += $typefirst;
+           
         } else if ($ratedata['customer_type'] == "return") {
-            $rating+=1;
-            $rating*= $rateWeight['customer-typeW'];
+             $typereturn=1*$rateWeight['customer-typeW'];
+             $rating+=$typereturn;
+//         echo $rating;
         }
         //housing
         if ($ratedata['housing'] == "Rent") {
-            $rating+=2;
-            $rating*= $rateWeight['housingW'];
+            $raterent=2*$rateWeight['housingW'];
+            $rating+=$raterent;
+           
         } else if ($ratedata['housing'] == "Free") {
-            $rating+=0;
-            $rating*= $rateWeight['housingW'];
+            $ratefree=0* $rateWeight['housingW'];
+            $rating+=$ratefree;
+           
         } else if ($ratedata['housing'] == "Own") {
-            $rating+=1;
-            $rating*= $rateWeight['housingW'];
+            $rateown=1* $rateWeight['housingW'];
+            $rating+=$rateown;
+            
+           
         }
         //gender
         if ($ratedata['gender'] == "male") {
-            $rating+=1;
-            $rating*= $rateWeight['genderW'];
+            $malerate=1* $rateWeight['genderW'];
+            $rating+= $malerate;
+           
         } else if ($ratedata['gender'] == "female") {
-            $rating+=2;
-            $rating*= $rateWeight['genderW'];
+            $femalerate=2*$rateWeight['genderW'];
+            $rating+=$femalerate;
+//        echo $rating;
         }
         //marital status
         if ($ratedata['marital_status'] == "single") {
-            $rating+=1;
-            $rating*= $rateWeight['marital_statusW'];
+            $singlerate=1* $rateWeight['marital_statusW'];
+            $rating+=$singlerate;
+            
         } else if ($ratedata['marital_status'] == "married") {
-            $rating+=2;
-            $rating*= $rateWeight['marital_statusW'];
+            $marriedrate=2* $rateWeight['marital_statusW'];
+            $rating+= $marriedrate;
+         
         } else if ($ratedata['marital_status'] == "divorced") {
-            $rating+=2;
-            $rating*= $rateWeight['marital_statusW'];
+            $divorcedrate=1*$rateWeight['marital_statusW'];
+            $rating+=$divorcedrate;
+            
         }
+//         echo $rating;
         //number of dependents
         if ($ratedata['dependents'] > 0) {
-            $rating+=2;
-            $rating*= $rateWeight['dependentsW'];
+            $hasdependents=2*$rateWeight['dependentsW'];
+            $rating+=  $hasdependents;
+           
         } else if ($ratedata['dependents'] <= 0) {
-            $rating+=1;
-            $rating*= $rateWeight['dependentsW'];
+            $nodependents=1*$rateWeight['dependentsW'];
+            $rating+=$nodependents;
+            
         }
+//         echo $rating;
+//        $rating*=2;
         $personalrating = $rating;
-
+       
         //******rating on loan**********
         //purpose
         if ($ratedata['purpose'] == "businessExpenses") {
-            $rating+=1;
-            $rating*= $rateWeight['purposeW'];
+            $businessExp=1*$rateWeight['purposeW'];
+            $rating+=$businessExp;
+            
         } else if ($ratedata['purpose'] == "expandBusiness") {
-            $rating+=3;
-            $rating*= $rateWeight['purposeW'];
+            $expandBusiness=3*$rateWeight['purposeW'];
+            $rating+=$expandBusiness;
+            
         } else if ($ratedata['purpose'] == "initiateAproject") {
-            $rating+=2;
-            $rating*= $rateWeight['purposeW'];
+            $initiateProject=2*$rateWeight['purposeW'];
+            $rating+=$initiateProject;
+           
         }
         //loan amount
         if ($ratedata['loan_amount'] >= ($ratedata['income'] * 2)) {
-            $rating+=1;
-            $rating*= $rateWeight['loan_amountW'];
+          $loan_amountrate=1*$rateWeight['loan_amountW'];
+            $rating+=$loan_amountrate;
+          
         }
+//         echo $rating;
+//         $rating*=1;
         $loanrating = $rating - $personalrating;
 
         //*******rating on business****
         //business type
         if ($ratedata['business_type'] == "creative") {
-            $rating+=1;
-            $rating*= $rateWeight['business_typeW'];
+            $creativerate=1*$rateWeight['business_typeW'];
+            $rating+=$creativerate;
+         
         } else if ($ratedata['business_type'] == "service") {
-            $rating+=3;
-            $rating*= $rateWeight['business_typeW'];
+            $servicerate=3* $rateWeight['business_typeW'];
+            $rating+=$servicerate;
+            
         } else if ($ratedata['business_type'] == "juaKali") {
-            $rating+=2;
-            $rating*= $rateWeight['business_typeW'];
+            $juakalirate=2*$rateWeight['business_typeW'];
+            $rating+=$juakalirate;
+            
         }
+//        echo $rating;
         //income
-        if ($ratedata['income'] > 5000) {
-            $rating+=1;
-            $rating*= $rateWeight['incomeW'];
-        } else if ($ratedata['income'] < 5000) {
-            $rating+=0;
-            $rating*= $rateWeight['incomeW'];
-        }
+        if ($ratedata['income'] <= 40000) {
+            $incomerate=1*$rateWeight['incomeW'];
+            $rating+=$incomerate;
+            
+        } 
+//        echo $rating;
         //asset-worth
-        if (($ratedata['asset_worth'] / 2) > $ratedata['income']) {
-            $rating+=1;
-            $rating*= $rateWeight['assert_worthW'];
-        } else if (($ratedata['asset_worth'] / 2) <= $ratedata['income']) {
-            $rating+=0;
-            $rating*= $rateWeight['assert_worthW'];
-        }
+        if (($ratedata['asset_worth'] / 2) > $ratedata['loan_amount']) {
+            $assetrate=1*$rateWeight['assert_worthW'];
+            $rating+=$assetrate;
+            
+        } 
+        
         //number of employees
         if ($ratedata['num_employees'] >= 2) {
-            $rating+=1;
-            $rating*= $rateWeight['num_employeesW'];
-        } else if ($ratedata['num_employees'] < 2) {
-            $rating+=0;
-            $rating*= $rateWeight['num_employeesW'];
-        }
+            $employeesrate=1*$rateWeight['num_employeesW'];
+            $rating+=$employeesrate;
+            
+        } 
+//        echo $rating;
         //business existence
         if ($ratedata['existence'] >= 2) {
-            $rating+=2;
+            $busovertwoyears=2*$rateWeight['business_existenceW'];
+            $rating+=$busovertwoyears;
             $rating*= $rateWeight['business_existenceW'];
         } else if ($ratedata['existence'] < 2) {
-            $rating+=1;
-            $rating*= $rateWeight['business_existenceW'];
+            $busbelowtwoyears=1*$rateWeight['business_existenceW'];
+            $rating+=$busbelowtwoyears;
+            
         }
-
+//        echo $rating;
+//         $rating*=3;
         $businessrating = $rating - $loanrating;
-        $portfoliobusinessrate = $loanrating + $personalrating;
+        $portfoliobusinessrate = ($loanrating + $personalrating);
         $returnsrating = $this->businessmodel->updateRating($portfoliobusinessrate);
         //var_dump($returnsrating);
 //         $sess_rating =array(
@@ -378,6 +409,7 @@ class Index extends CI_Controller {
 //         $this->session->set_userdata($sess_rating);
 //                $bizRating = $sess_rating["businessRating"];
         //echo $rating;
+       
         $totrating = $this->userservice->updateRating($rating);
 
         $personal['rating'] = $rating;
